@@ -74,11 +74,11 @@ from telegram.ext import (
 )
 import re
 from telegram.files.inputmedia import InputMediaDocument
-import os
 from telegram.ext import Updater, InlineQueryHandler, CommandHandler
+import os
 
 PORT = int(os.environ.get('PORT', 5000))
-TOKEN = os.environ["5072578561:AAH1k4MKGTHCmr6WX2WJJNrwsJlczOT96xY"]
+TOKEN = os.environ["TOKEN"]
 
 name_bot="wearelegion"
 # Enable logging
