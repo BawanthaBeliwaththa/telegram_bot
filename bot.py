@@ -498,7 +498,6 @@ def end(update: Update, context: CallbackContext) -> int:
 def main():
     updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
-    dp.add_handler(CommandHandler('bop', bop))
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start)],
         states={
