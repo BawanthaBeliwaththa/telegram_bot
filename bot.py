@@ -74,7 +74,6 @@ from telegram.ext import (
 )
 import re
 from telegram.files.inputmedia import InputMediaDocument
-import telegram_send
 import os
 from telegram.ext import Updater, InlineQueryHandler, CommandHandler
 
