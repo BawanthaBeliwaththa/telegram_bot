@@ -73,7 +73,6 @@ from telegram.ext import (
     CallbackContext,
 )
 import re
-import requests
 from telegram.files.inputmedia import InputMediaDocument
 import telegram_send
 import os
