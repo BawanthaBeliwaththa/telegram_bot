@@ -79,6 +79,8 @@ import telegram_send
 import os
 from telegram.ext import Updater, InlineQueryHandler, CommandHandler
 
+PORT = int(os.environ.get('PORT', 5000))
+TOKEN = os.environ["5072578561:AAH1k4MKGTHCmr6WX2WJJNrwsJlczOT96xY"]
 
 name_bot="wearelegion"
 # Enable logging
