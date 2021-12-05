@@ -497,20 +497,10 @@ def end(update: Update, context: CallbackContext) -> int:
     return ConversationHandler.END
 
 
-def main() -> None:
-    """Run the bot."""
-    # Create the Updater and pass it your bot's token.
-    updater = Updater("5072578561:AAH1k4MKGTHCmr6WX2WJJNrwsJlczOT96xY")
-
-    # Get the dispatcher to register handlers
-    dispatcher = updater.dispatcher
-
-    # Setup conversation handler with the states FIRST and SECOND
-    # Use the pattern parameter to pass CallbackQueries with specific
-    # data pattern to the corresponding handlers.
-    # ^ means "start of line/string"
-    # $ means "end of line/string"
-    # So ^ABC$ will only allow 'ABC'
+def main():
+    updater = Updater(TOKEN, use_context=True)
+    dp = updater.dispatcher
+    dp.add_handler(CommandHandler('bop', bop))
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start)],
         states={
@@ -544,19 +534,12 @@ def main() -> None:
         },
         fallbacks=[CommandHandler('start', start)],
     )
-
-    # Add ConversationHandler to dispatcher that will be used for handling updates
-    dispatcher.add_handler(conv_handler)
-
-    # Start the Bot
-    updater.start_polling()
-
-
-    # Run the bot until you press Ctrl-C or the process receives SIGINT,
-    # SIGTERM or SIGABRT. This should be used most of the time, since
-    # start_polling() is non-blocking and will stop the bot gracefully.
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=TOKEN)
+    updater.bot.setWebhook('https://telebawabot.herokuapp.com/' + TOKEN)
+    
     updater.idle()
-
 
 if __name__ == '__main__':
     main()
